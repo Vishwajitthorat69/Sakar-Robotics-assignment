@@ -1,0 +1,10 @@
+<root main_tree_to_execute="MainTree">
+  <BehaviorTree ID="MainTree">
+    <Sequence name="mission_seq">
+      <NavigateToPose name="go_to_pick"/>
+      <CallService service_name="/trigger_pick" />
+      <NavigateToPose name="go_to_place"/>
+      <CallService service_name="/trigger_place" />
+    </Sequence>
+  </BehaviorTree>
+</root>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="tb3_with_doosan">
+  <!-- lightweight Doosan-style mount skeleton for simulation -->
+  <link name="base_link">
+    <visual><geometry><cylinder length="0.05" radius="0.18"/></geometry></visual>
+  </link>
+  <link name="doosan_base_link">
+    <visual><geometry><box size="0.15 0.15 0.05"/></geometry></visual>
+  </link>
+  <joint name="doosan_mount_joint" type="fixed"><parent link="base_link"/><child link="doosan_base_link"/><origin xyz="0 0 0.05"/></joint>
+  <!-- minimal Doosan arm mimic: 4 virtual joints -->
+  <link name="ds_link1"><visual><geometry><cylinder length="0.18" radius="0.03"/></geometry></visual></link>
+  <joint name="ds_j1" type="revolute"><parent link="doosan_base_link"/><child link="ds_link1"/><axis xyz="0 0 1"/></joint>
+  <link name="ds_link2"><visual><geometry><cylinder length="0.18" radius="0.025"/></geometry></visual></link>
+  <joint name="ds_j2" type="revolute"><parent link="ds_link1"/><child link="ds_link2"/><axis xyz="0 1 0"/></joint>
+  <link name="ds_ee"><visual><geometry><sphere radius="0.035"/></geometry></visual></link>
+  <joint name="ds_j3" type="revolute"><parent link="ds_link2"/><child link="ds_ee"/><axis xyz="0 1 0"/></joint>
+</robot>

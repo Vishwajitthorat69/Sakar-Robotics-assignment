@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="tb3_with_arm_3dof">
+  <xacro:include filename="arm_3dof.xacro"/>
+  <link name="base_link">
+    <visual><geometry><cylinder length="0.05" radius="0.18"/></geometry></visual>
+    <collision><geometry><cylinder length="0.05" radius="0.18"/></geometry></collision>
+  </link>
+  <joint name="arm_mount_fixed" type="fixed"><parent link="base_link"/><child link="arm_base_link"/><origin xyz="0 0 0.05"/></joint>
+</robot>
